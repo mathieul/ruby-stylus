@@ -39,8 +39,8 @@ module Stylus
     Stylus.debug = options.fetch(:debug, Stylus.debug)
     Stylus.compress = options.fetch(:compress, Stylus.compress)
     template = detect_template_hander(options)
-    environment.register_engine('.styl', template)
-    environment.register_preprocessor('text/css', Stylus::ImportProcessor)
+    environment.register_engine('.styl', template, silence_deprecation: true)
+    environment.register_preprocessor('text/css', Stylus::ImportProcessor, silence_deprecation: true)
   end
 
   # Internal: Gets the desired Tilt template handler to the current configuration.
